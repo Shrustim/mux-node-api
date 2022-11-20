@@ -1,17 +1,48 @@
 const { createServer } = require('http');
 const express = require('express');
-const WebSocketServer = require('ws').Server;
+const { parse } = require('url');
+const url = require('url');
+
+// const WebSocketServer = require('ws').Server;
+
+const WebSocket = require('ws');
 const child_process = require('child_process');
+
 const app = express();
 
 const PORT = 3000;
+
 const server = createServer(app);
+const wss = new WebSocket.Server({ port: 8080 });
+// var wss = new WebSocket('ws://localhost:3001/rtmp');
+app.listen(PORT, (error) => {
+
+    if (!error)
+        console.log("Server is Successfully Running,and App is listening on port " + PORT)
+    else
+        console.log("Error occurred, server can't start", error);
+});
+
+
+
+// wss.on('connection', function connection(ws) {
+//     ws.on('message', function incoming(data) {
+//         wss.clients.forEach(function each(client) {
+//             if (client !== ws && client.readyState === WebSocket.OPEN) {
+//                 client.send(data);
+//                 // console.log('data', data);
+//             }
+//         });
+//     });
+// });
+
+
 
 //initialize the WebSocket server instance
 
-const wss = new WebSocketServer({
-    server: server
-});
+// const wss = new WebSocketServer({
+//     server: server
+// });
 
 wss.on('connection', (ws, req) => {
     console.log('Streaming socket connected');
@@ -81,13 +112,6 @@ wss.on('connection', (ws, req) => {
     });
 });
 
-app.listen(PORT, (error) => {
-
-    if (!error)
-        console.log("Server is Successfully Running,and App is listening on port " + PORT)
-    else
-        console.log("Error occurred, server can't start", error);
-});
 app.get('/', (req, res) => {
 
     res.send("GET Request Called")
