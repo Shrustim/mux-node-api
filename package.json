@@ -1,16 +1,17 @@
 {
-  "name": "mux-node-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "http": "^0.0.1-security",
-    "ws": "^8.11.0"
-  }
+    "name": "mux-node-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "http": "^0.0.1-security",
+        "socket.io": "^4.5.3",
+        "ws": "^8.11.0"
+    }
 }
